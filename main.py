@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import sys
+sys.path.append("/Users/suyashgoel/myenv/lib/python3.10/site-packages")
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
@@ -7,7 +9,7 @@ import os
 import re
 
 # Load the YOLOv8 model with your custom weights
-model = YOLO("best-v10.pt")  # Path to your YOLOv8 weights
+model = YOLO("best-v11.pt")  # Path to your YOLOv8 weights
 
 # Function to split the image into 3x3 tiles and keep track of original coordinates
 def split_image_into_tiles(image, grid_size=(3, 3)):
@@ -48,7 +50,7 @@ def stitch_tiles_back(full_image, tiles):
     # Process each tile with the model and draw the predictions on the full image
     for tile, tile_box in tiles:
         # Run YOLOv8 inference on the tile with a lower confidence threshold
-        results = model(tile, conf=0.2)  # YOLO inference with a lower confidence threshold
+        results = model(tile)  # YOLO inference with a lower confidence threshold
         
         # Draw bounding boxes on the full image relative to their tile position
         if len(results[0].boxes) > 0:
@@ -79,7 +81,7 @@ def numeric_sort(value):
     return int(numbers[0]) if numbers else float('inf')  # Use 'inf' for files without numbers
 
 # Folder path where the images are stored
-folder_path = "/Users/suyashgoel/Bioelectricity-Annotation/LESC EF 100 mV_pos 3"
+folder_path = "/Users/suyashgoel/LESC EF 100 mV_pos 3"
 output_folder = "out"
 
 # Ensure the output folder exists
