@@ -81,7 +81,7 @@ def numeric_sort(value):
     return int(numbers[0]) if numbers else float('inf')  # Use 'inf' for files without numbers
 
 # Folder path where the images are stored
-folder_path = "/Users/suyashgoel/LESC EF 100 mV_pos 3"
+folder_path = "LESC_NM EF_pos 3_plate 3"
 output_folder = "out"
 
 # Ensure the output folder exists
