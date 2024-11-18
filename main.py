@@ -29,9 +29,11 @@ def create_tif_stack(input_dir, output_tif_path):
 
 def main():
     avi_file = input("Enter the path to the AVI file: ")
+    avi_name = os.path.splitext(os.path.basename(avi_file))[0]
+    tiff_output_path = f"{avi_name}_processed.tif"
+
     frame_output_dir = "frames"
     processed_output_dir = "processed_frames"
-    tiff_output_path = "processed_frames.tif"
 
     print("Setting up directories...")
     clear_or_create_directory(frame_output_dir)

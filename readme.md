@@ -7,12 +7,11 @@ This pipeline processes `.avi` video files by extracting frames, applying YOLOv8
 ## **Workflow Overview**
 
 1. **Download the Input `.tif` File**:
-   - Obtain the `.tif` file from Box or your administrator.
+   - Obtain the intended `.tif` file from Box.
    
 2. **Convert `.tif` to `.avi` Using ImageJ**:
    - Open the `.tif` file in **ImageJ**.
    - Export it as an `.avi` file:
-     - Go to `File > Save As > AVI`.
      - Save the exported `.avi` file.
 
 3. **Run the Pipeline on the Exported `.avi` File**:
@@ -50,3 +49,17 @@ This pipeline processes `.avi` video files by extracting frames, applying YOLOv8
    source venv/bin/activate
    # On Windows:
    venv\Scripts\activate
+
+4. **Install Requirements:**:
+   Run the following command to install all necessary dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+5. **Run the Pipeline:**:
+   Use the following command to process your `.avi` file:
+   ```bash
+   python main.py
+
+6. **Enter file path:**:
+   When prompted, enter the file path
+
