@@ -50,21 +50,22 @@ This pipeline processes `.avi` video files by extracting frames, applying YOLOv8
    # On Windows:
    venv\Scripts\activate
 
-4. **Install Requirements:**:
+4. **Install Requirements**:
    Run the following command to install all necessary dependencies:
    ```bash
    pip install -r requirements.txt
 
-5. **Run the Pipeline:**:
+5. **Run the Pipeline**:
    Use the following command to process your `.avi` file:
    ```bash
    python main.py
 
-6. **Enter file path:**:
+6. **Enter file path**:
    - When prompted, enter the file path to your saved `.avi` file.
 
-7. **Wait for processing to finish:**:
+7. **Wait for processing to finish**:
    - The processed file will be saved at `[avi_file]_processed.tif`, where `[avi_file]` refers to the filename of your input file without the extension.
+   - For example, if your input file is `example.avi`, the output will be saved as `example_processed.tif`.
 
 
 
