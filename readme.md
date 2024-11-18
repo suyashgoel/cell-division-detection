@@ -1,0 +1,52 @@
+# **README: AVI to TIF Frame Processing Pipeline**
+
+This pipeline processes `.avi` video files by extracting frames, applying YOLOv8 object detection, and combining the processed frames into a multi-page `.tif` file. It is designed to seamlessly integrate with workflows involving ImageJ and `.tif` files.
+
+---
+
+## **Workflow Overview**
+
+1. **Download the Input `.tif` File**:
+   - Obtain the `.tif` file from Box or your administrator.
+   
+2. **Convert `.tif` to `.avi` Using ImageJ**:
+   - Open the `.tif` file in **ImageJ**.
+   - Export it as an `.avi` file:
+     - Go to `File > Save As > AVI`.
+     - Save the exported `.avi` file.
+
+3. **Run the Pipeline on the Exported `.avi` File**:
+   - Use this pipeline to process the `.avi` file:
+     - Extract frames.
+     - Run object detection using YOLOv8.
+     - Combine the processed frames into a multi-page `.tif` file.
+
+4. **Retrieve the Processed `.tif` File**:
+   - Use the output `.tif` file for further analysis or visualization.
+
+---
+
+## **Requirements**
+
+- **Python version**: 3.8 or later.
+- **Environment**: Compatible with Windows, macOS, or Linux.
+- **Dependencies**: Listed in `requirements.txt` and can be installed easily.
+
+---
+
+## **Setup Instructions**
+
+1. **Install Python**:
+   - Download and install Python 3.8 or later from [python.org](https://www.python.org/downloads/).
+
+2. **Download the Repository**:
+   - Obtain the project folder containing all files.
+
+3. **Set Up a Virtual Environment (Recommended)**:
+   ```bash
+   python -m venv venv
+   # Activate the virtual environment:
+   # On macOS/Linux:
+   source venv/bin/activate
+   # On Windows:
+   venv\Scripts\activate
