@@ -61,5 +61,10 @@ This pipeline processes `.avi` video files by extracting frames, applying YOLOv8
    python main.py
 
 6. **Enter file path:**:
-   When prompted, enter the file path
+   - When prompted, enter the file path to your saved `.avi` file.
+
+7. **Wait for processing to finish:**:
+   - The processed file will be saved at `[avi_file]_processed.tif`, where `[avi_file]` refers to the filename of your input file without the extension.
+
+
 
