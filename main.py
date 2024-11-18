@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import sys
-sys.path.append("/Users/suyashgoel/myenv/lib/python3.10/site-packages")
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
@@ -31,15 +30,24 @@ def draw_boxes_on_full_image(full_image, results, tile_box):
     tile_x1, tile_y1, tile_x2, tile_y2 = tile_box  # Tile's position in the full image
     
     for result in results:
-        for box in result.boxes.xyxy:  # xyxy format for bounding box
+        for box, conf in zip(result.boxes.xyxy, result.boxes.conf):
             x1, y1, x2, y2 = map(int, box)  # Get the coordinates of the bounding box
             # Adjust coordinates relative to the original image
             x1 += tile_x1
             y1 += tile_y1
             x2 += tile_x1
             y2 += tile_y1
+            
+            # Determine the color based on confidence intervals
+            if conf >= 0.4:
+                color = (0, 255, 0)  # Green for high confidence
+            elif conf >= 0.2:
+                color = (255, 165, 0)  # Orange for medium confidence
+            else:
+                color = (255, 0, 0)  # Red for low confidence
+
             # Draw the box on the full image
-            image_with_boxes = cv2.rectangle(image_with_boxes, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Green box
+            image_with_boxes = cv2.rectangle(image_with_boxes, (x1, y1), (x2, y2), color, 2)
     
     return image_with_boxes
 
@@ -50,7 +58,7 @@ def stitch_tiles_back(full_image, tiles):
     # Process each tile with the model and draw the predictions on the full image
     for tile, tile_box in tiles:
         # Run YOLOv8 inference on the tile with a lower confidence threshold
-        results = model(tile)  # YOLO inference with a lower confidence threshold
+        results = model(tile, conf=0.10)  # Lower confidence threshold to include more predictions
         
         # Draw bounding boxes on the full image relative to their tile position
         if len(results[0].boxes) > 0:
@@ -82,7 +90,7 @@ def numeric_sort(value):
 
 # Folder path where the images are stored
 folder_path = "LESC_NM EF_pos 3_plate 3"
-output_folder = "out"
+output_folder = "out2"
 
 # Ensure the output folder exists
 os.makedirs(output_folder, exist_ok=True)
