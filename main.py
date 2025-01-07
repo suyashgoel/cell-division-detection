@@ -22,7 +22,6 @@ def extract_frames_from_avi(avi_path, output_dir):
         if not ret:
             break
 
-        # Save frames with zero-padded numbers
         jpg_filename = os.path.join(output_dir, f'{base_name}_{frame_count:04d}.jpg')
         cv2.imwrite(jpg_filename, frame)
         frame_count += 1
