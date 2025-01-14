@@ -4,3 +4,4 @@ frames
 processed_frames
 __pycache__
 .DS_Store
+venv/

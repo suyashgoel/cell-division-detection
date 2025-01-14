@@ -105,7 +105,7 @@ def create_tif_stack(input_dir, output_tif_path):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python script.py <path_to_avi_file>")
+        print("Usage: python main.py <path_to_avi_file>")
         sys.exit(1)
     avi_file = sys.argv[1]
     avi_name = os.path.splitext(os.path.basename(avi_file))[0]
