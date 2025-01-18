@@ -25,9 +25,9 @@ This guide provides step-by-step instructions for setting up the AI tools requir
 
 1. Open the command prompt.
 2. Create a virtual environment:
-   - `python -m venv ophthalmology-env`
+   - `python -m venv cell-division-env`
 3. Activate the virtual environment:
-   - `.\ophthalmology-env\Scripts\activate`
+
 
 ---
 
