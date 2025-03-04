@@ -56,15 +56,9 @@ def draw_boxes_on_full_image(full_image, results, tile_box):
             y1 += tile_y1
             x2 += tile_x1
             y2 += tile_y1
-            
-            if conf >= 0.4:
-                color = (0, 255, 0)
-            elif conf >= 0.25:
-                color = (255, 165, 0)
-            else:
-                color = (255, 0, 0)
 
-            image_with_boxes = cv2.rectangle(image_with_boxes, (x1, y1), (x2, y2), color, 2)
+            image_with_boxes = cv2.rectangle(image_with_boxes, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
 
     return image_with_boxes
 
@@ -74,7 +68,7 @@ def process_image_with_tiles(image_path, output_path):
     
     image_with_boxes = np.array(full_image)
     for tile, tile_box in tiles:
-        results = model(tile, conf=0.10)
+        results = model(tile, conf=.15)
         if len(results[0].boxes) > 0:
             image_with_boxes = draw_boxes_on_full_image(image_with_boxes, results, tile_box)
     

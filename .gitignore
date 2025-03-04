@@ -1,7 +1,8 @@
 *.tif
 *.avi
 frames
-processed_frames
+processed
+uploads
 __pycache__
 .DS_Store
 venv/
